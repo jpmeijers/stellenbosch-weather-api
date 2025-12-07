@@ -1,0 +1,12 @@
+[general]
+debug = false
+
+[database]
+host = 127.0.0.1
+port = 3306
+username = weather
+password = redacted
+database = weather
+
+[sonbesie]
+address = xxx.xxx.xxx.xxx
