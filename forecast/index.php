@@ -1,5 +1,6 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 
 $cache_file = '/tmp/met-no-stellenbosch-forecast.json';
