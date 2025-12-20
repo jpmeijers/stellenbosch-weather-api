@@ -10,14 +10,20 @@ class DatabaseConnector
 
         try {
             // Create a connection instance using DSN
-            $dsn = "mysql:host=" . $settings['database']['host'] . ";port=".$settings['database']['port'].";dbname=" . $settings['database']['database'];
-            if($settings['general']['debug']) {
+            $dsn = "mysql:host=" . $settings['database']['host'] . ";port=" . $settings['database']['port'] . ";dbname=" . $settings['database']['database'];
+            if ($settings['general']['debug']) {
                 echo $dsn;
             }
-            $conn = new PDO($dsn, $settings['database']['username'], $settings['database']['password']);
+            $timeout_seconds = 2;
+            $conn = new PDO(
+                $dsn,
+                $settings['database']['username'],
+                $settings['database']['password']
+            );
 
             // Set the PDO error mode to exception for robust error handling
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(PDO::ATTR_TIMEOUT, $timeout_seconds);
 
             $this->connection = $conn;
         } catch (PDOException $e) {

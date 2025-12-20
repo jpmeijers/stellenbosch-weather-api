@@ -2,13 +2,6 @@
 
 require_once '../cors.php';
 
-$texturePath = __DIR__ . '/lroc_color_2k.jpg';
-if (!file_exists($texturePath)) {
-    http_response_code(500);
-    echo "Missing texture: " . basename($texturePath);
-    exit;
-}
-
 $cacheTtlSeconds = 15 * 60; // 15 minutes
 $cacheFile = sys_get_temp_dir() . '/moon-current-phase-xplanet.png';
 
@@ -19,6 +12,13 @@ if (file_exists($cacheFile)) {
         readfile($cacheFile);
         exit;
     }
+}
+
+$texturePath = __DIR__ . '/lroc_color_2k.jpg';
+if (!file_exists($texturePath)) {
+    http_response_code(500);
+    echo "Missing texture: " . basename($texturePath);
+    exit;
 }
 
 $tmpOut = tempnam(sys_get_temp_dir(), 'moonxp_');
