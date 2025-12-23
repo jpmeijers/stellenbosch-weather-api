@@ -98,7 +98,7 @@ function downloadFile($file)
     }
 
 // Get the file path
-    $file_path = $_SERVER['HOME'] . '/data-dumps/' . basename($allowed_files[$file]);
+    $file_path = $_SERVER['HOME'] . '/data-dumps/' . $allowed_files[$file];
 
 // Check if file exists
     if (!file_exists($file_path)) {
