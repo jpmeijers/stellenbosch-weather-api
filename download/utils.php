@@ -84,11 +84,11 @@ function downloadFile($file)
 {
     // Define allowed files with their paths
     $allowed_files = [
-        'dc' => __DIR__ . '/Weather_decingel.zip',
-        'mr' => __DIR__ . '/Weather_mmroof.zip',
-        'ee' => __DIR__ . '/WeatherEE.zip',
-        'mm' => __DIR__ . '/WeatherMM.zip',
-        'sb20102020' => __DIR__ . '/SB_TMin_2010-2020.zip'
+        'dc' => __DIR__ . 'Weather_decingel.zip',
+        'mr' => __DIR__ . 'Weather_mmroof.zip',
+        'ee' => __DIR__ . 'WeatherEE.zip',
+        'mm' => __DIR__ . 'WeatherMM.zip',
+        'sb20102020' => __DIR__ . 'SB_TMin_2010-2020.zip'
     ];
 
 // Validate the file parameter
@@ -98,7 +98,7 @@ function downloadFile($file)
     }
 
 // Get the file path
-    $file_path = $allowed_files[$file];
+    $file_path = $_SERVER['HOME'] . '/data-dumps/' . basename($allowed_files[$file]);
 
 // Check if file exists
     if (!file_exists($file_path)) {
